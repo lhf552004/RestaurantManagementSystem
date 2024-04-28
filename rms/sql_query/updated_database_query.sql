@@ -56,15 +56,15 @@ CREATE TABLE `rmsFinalProject`.`category`(
 );
 
 -- Insert Query
-INSERT INTO `rmsFinalProject`.`category` (`category_name`) 
-values 
- ('Starters'),
- ('Non-Veg Items'),
- ('Veg Items'),
- ('Seafood Items'),
- ('Soft Drinks'),
- ('Beer/Liquors'),
- ('Dessert');
+-- INSERT INTO `rmsFinalProject`.`category` (`category_name`) 
+-- values 
+--  ('Starters'),
+--  ('Non-Veg Items'),
+--  ('Veg Items'),
+--  ('Seafood Items'),
+--  ('Soft Drinks'),
+--  ('Beer/Liquors'),
+--  ('Dessert');
 
 -- =========================================================================
 
@@ -78,20 +78,20 @@ CREATE TABLE `rmsFinalProject`.`menu`(
 );
 
 -- Insert Query
-INSERT INTO `rmsFinalProject`.`menu` (`food_name`, `price` ,`category_id`) 
-values
- ('Chicken Nuggets', 10.00, 1),
- ('Pancakes', 10.00, 3),
- ('French Toast', 10.00, 3),
- ('Chicken Caeser Salad', 10.00, 2),
- ('Coke', 10.00, 5),
- ('Ice-Cream', 10.00, 7),
- ('Apple Crumble', 10.00, 7),
- ('Prawn Salad', 10.00, 4),
- ('Salmon Sandwich', 10.00, 4),
- ('Chicken Burger', 10.00, 2),
- ('Pulled Pork Sandwich', 10.00, 2),
- ('Fanta', 17.50, 5);
+-- INSERT INTO `rmsFinalProject`.`menu` (`food_name`, `price` ,`category_id`) 
+-- values
+--  ('Chicken Nuggets', 10.00, 1),
+--  ('Pancakes', 10.00, 3),
+--  ('French Toast', 10.00, 3),
+--  ('Chicken Caeser Salad', 10.00, 2),
+--  ('Coke', 10.00, 5),
+--  ('Ice-Cream', 10.00, 7),
+--  ('Apple Crumble', 10.00, 7),
+--  ('Prawn Salad', 10.00, 4),
+--  ('Salmon Sandwich', 10.00, 4),
+--  ('Chicken Burger', 10.00, 2),
+--  ('Pulled Pork Sandwich', 10.00, 2),
+--  ('Fanta', 17.50, 5);
 
  
 -- =========================================================================
