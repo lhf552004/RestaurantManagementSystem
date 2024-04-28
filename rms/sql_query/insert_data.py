@@ -10,14 +10,16 @@ load_dotenv()
 # Accessing variables
 db_user = os.getenv('DB_USER')
 db_password = os.getenv('DB_PASSWORD')
+db_name = os.getenv('DB_NAME')
+db_host = os.getenv('DB_HOST')
 
 # Function to connect to the MySQL database
 def connect_to_db():
     return mysql.connector.connect(
-        host="localhost",
+        host=db_host,
         user=db_user,
         password=db_password,
-        database="rmsFinalProject"
+        database=db_name
     )
 
 # Function to read JSON data from a file

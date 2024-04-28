@@ -9,14 +9,19 @@ load_dotenv()
 # Accessing variables
 db_user = os.getenv('DB_USER')
 db_password = os.getenv('DB_PASSWORD')
-
+db_name = os.getenv('DB_NAME')
+db_host = os.getenv('DB_HOST')
 
 class DB:
     # Constructor of Database Class
     def __init__(self):
         # instance of database object that connects us to the database
         self._db = mysql.connect(
-            host="localhost", user=db_user, passwd=db_password, database="rmsFinalProject")  # rms_final_project
+               host=db_host,
+               user=db_user,
+               password=db_password,
+               database=db_name
+            )  # rms_final_project
         # Closing the database Connection
         self._db.close()
 
