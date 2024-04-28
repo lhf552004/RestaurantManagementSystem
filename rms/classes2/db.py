@@ -24,15 +24,21 @@ class DB:
     # This function is only used for query that are related to getting the information from database;
     # It returns the result after getting from the database
     def fetch(self, query, values=None):
-        self._db.reconnect()
-        cursor = self._db.cursor()
-        if values == None:
-            cursor.execute(query)
-        else:
-            cursor.execute(query, values)
-        result = cursor.fetchall()
-        cursor.close()
-        self._db.close()
+        try:
+            self._db.reconnect()
+            cursor = self._db.cursor()
+            if values is None:
+                cursor.execute(query)
+            else:
+                cursor.execute(query, values)
+            result = cursor.fetchall()
+            cursor.close()
+        except mysql.connector.Error as err:
+            print(f"Error: {err}")
+            result = []
+        finally:
+            if self._db.is_connected():
+                self._db.close()
         return result
 
     # It is a function that also takes the query and values to perform the query on database

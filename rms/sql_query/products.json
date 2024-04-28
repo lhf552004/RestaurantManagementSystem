@@ -1,0 +1,773 @@
+[
+  {
+    "id": 1,
+    "name": "Americano",
+    "description": "",
+    "price": 2.25,
+    "type": "coffee",
+
+    "tag": "Recommended",
+    "imageUrl": "placeholder-image-url.png",
+    "related": []
+  },
+  {
+    "id": 2,
+    "name": "Caffe Latte",
+    "description": "",
+    "price": 2.25,
+    "type": "coffee",
+
+    "tag": "Recommended",
+    "imageUrl": "placeholder-image-url.png",
+    "related": []
+  },
+  {
+    "id": 3,
+    "name": "Cappuccino",
+    "description": "",
+    "price": 2.25,
+    "type": "coffee",
+
+    "tag": "Recommended",
+    "imageUrl": "placeholder-image-url.png",
+    "related": []
+  },
+  {
+    "id": 4,
+    "name": "Cafe Breve",
+    "description": "",
+    "price": 2.25,
+    "type": "coffee",
+
+    "tag": "Recommended",
+    "imageUrl": "placeholder-image-url.png",
+    "related": []
+  },
+  {
+    "id": 5,
+    "name": "Espresso ",
+    "description": "",
+    "price": 2.25,
+    "type": "coffee",
+
+    "tag": "Recommended",
+    "imageUrl": "placeholder-image-url.png",
+    "related": []
+  },
+  {
+    "id": 6,
+    "name": "Black tea",
+    "description": "",
+    "price": 2.65,
+    "type": "tea",
+
+    "tag": "Recommended",
+    "imageUrl": "placeholder-image-url.png",
+    "related": []
+  },
+  {
+    "id": 7,
+    "name": "Milk tea with tapioca balls",
+    "description": "",
+    "price": 2.99,
+    "type": "tea",
+
+    "tag": "Recommended",
+    "imageUrl": "placeholder-image-url.png",
+    "related": []
+  },
+  {
+    "id": 8,
+    "name": "Pork buns (5pc)",
+    "description": "Flour,pork,green onions",
+    "price": 7.99,
+    "type": "steamed-buns",
+    "show-case": true,
+    "tag": "Recommended",
+    "imageUrl": "steamed-buns/pork.jpg",
+    "related": []
+  },
+  {
+    "id": 9,
+    "name": "Chicken  buns (5pc)",
+    "description": "Flour,chicken,rice noodle,green onions",
+    "price": 7.99,
+    "type": "steamed-buns",
+
+    "tag": "Recommended",
+    "imageUrl": "steamed-buns/chicken.jpg",
+    "related": []
+  },
+  {
+    "id": 10,
+    "name": "Vegetables Mushroom buns (5pc)",
+    "description": "Flour,Vegetable and Mushroom",
+    "price": 7.99,
+    "type": "steamed-buns",
+
+    "tag": "Recommended",
+    "imageUrl": "steamed-buns/pork.jpg",
+    "related": []
+  },
+  {
+    "id": 11,
+    "name": "Pork steamed dumplings (10pc)",
+    "description": "",
+    "price": 7.99,
+    "type": "dumpling",
+
+    "tag": "Recommended",
+    "imageUrl": "placeholder-image-url.png",
+    "related": []
+  },
+  {
+    "id": 12,
+    "name": "Miso Soup",
+    "description": " tofu,wakame seaweed,with green onions",
+    "price": 2.25,
+    "type": "soup-jp",
+
+    "tag": "Recommended",
+    "imageUrl": "placeholder-image-url.png",
+    "related": "[2, 3, 4, 5]"
+  },
+  {
+    "id": 13,
+    "name": "Crab Salad",
+    "description": "",
+    "price": 6.95,
+    "type": "appetizers",
+
+    "tag": "Recommended",
+    "imageUrl": "placeholder-image-url.png",
+    "related": []
+  },
+  {
+    "id": 14,
+    "name": "Seaweed Salad",
+    "description": "",
+    "price": 6.95,
+    "type": "appetizers",
+
+    "tag": "Recommended",
+    "imageUrl": "placeholder-image-url.png",
+    "related": []
+  },
+  {
+    "id": 15,
+    "name": "Edamame",
+    "description": "Steamed fresh soy bean with lightly salted",
+    "price": 5.95,
+    "type": "appetizers",
+
+    "tag": "Recommended",
+    "imageUrl": "placeholder-image-url.png",
+    "related": []
+  },
+  {
+    "id": 16,
+    "name": "Spring roll  (5 pcs)",
+    "description": "",
+    "price": 6.55,
+    "type": "appetizers",
+
+    "tag": "Recommended",
+    "imageUrl": "placeholder-image-url.png",
+    "related": []
+  },
+  {
+    "id": 17,
+    "name": "Shrimp Tempura i (5 pcs)",
+    "description": "",
+    "price": 8.95,
+    "type": "appetizers",
+
+    "tag": "Recommended",
+    "imageUrl": "placeholder-image-url.png",
+    "related": []
+  },
+  {
+    "id": 18,
+    "name": "Crab Tempura (5 pcs)",
+    "description": "",
+    "price": 7.95,
+    "type": "appetizers",
+
+    "tag": "Recommended",
+    "imageUrl": "placeholder-image-url.png",
+    "related": []
+  },
+  {
+    "id": 19,
+    "name": "Takoyaki (6 pcs)",
+    "description": "Octopus balls made of a wheat flour with Seaweed powder and bonito flakes",
+    "price": 7.95,
+    "type": "appetizers",
+
+    "tag": "Recommended",
+    "imageUrl": "placeholder-image-url.png",
+    "related": []
+  },
+  {
+    "id": 20,
+    "name": "California Roll",
+    "description": "imitation crab,Avocado and Cucumber-Fish roe on top",
+    "price": 6.95,
+    "type": "sushi-roll",
+    "menu": true,
+    "show-case": true,
+    "tag": "Recommended",
+    "imageUrl": "sushi-roll/california-roll.jpg",
+    "related": []
+  },
+  {
+    "id": 21,
+    "name": "Spicy crab Roll",
+    "description": "Spicy crab with Spicy meal",
+    "price": 6.95,
+    "type": "sushi-roll",
+    "menu": true,
+    "tag": "Recommended",
+    "imageUrl": "placeholder-image-url.png",
+    "related": []
+  },
+  {
+    "id": 22,
+    "name": "Spicy Avocado Roll",
+    "description": "Avocado with Spicy meal",
+    "price": 6.95,
+    "type": "veg-fruit-roll",
+
+    "tag": "Recommended",
+    "imageUrl": "placeholder-image-url.png",
+    "related": []
+  },
+  {
+    "id": 23,
+    "name": "Avocado&Cucumber Roll",
+    "description": "",
+    "price": 6.95,
+    "type": "veg-fruit-roll",
+
+    "tag": "Recommended",
+    "imageUrl": "placeholder-image-url.png",
+    "related": []
+  },
+  {
+    "id": 24,
+    "name": "Mango Roll",
+    "description": "",
+    "price": 6.95,
+    "type": "veg-fruit-roll",
+
+    "tag": "Recommended",
+    "imageUrl": "placeholder-image-url.png",
+    "related": []
+  },
+  {
+    "id": 25,
+    "name": "Spicy Salmon Roll",
+    "description": "Salmon with Spicy meal",
+    "price": 7.95,
+    "type": "sushi-roll",
+
+    "tag": "Recommended",
+    "imageUrl": "placeholder-image-url.png",
+    "related": []
+  },
+  {
+    "id": 26,
+    "name": "Salmon Avocado Roll",
+    "description": "",
+    "price": 7.95,
+    "type": "sushi-roll",
+
+    "tag": "Recommended",
+    "imageUrl": "placeholder-image-url.png",
+    "related": []
+  },
+  {
+    "id": 27,
+    "name": "Salmon cheese Roll",
+    "description": "Salmon with Cream cheese",
+    "price": 7.95,
+    "type": "sushi-roll",
+
+    "tag": "Recommended",
+    "imageUrl": "placeholder-image-url.png",
+    "related": []
+  },
+  {
+    "id": 28,
+    "name": "Spicy Tuna Roll",
+    "description": "Tuna with Spicy meal",
+    "price": 7.95,
+    "type": "sushi-roll",
+    "show-case": true,
+    "tag": "Recommended",
+    "imageUrl": "sushi-roll/spicy-tuna-roll.jpg",
+    "related": []
+  },
+  {
+    "id": 29,
+    "name": "Philadelphia&Avocado Roll",
+    "description": "Smoke Salmon ",
+    "price": 7.95,
+    "type": "sushi-roll",
+
+    "tag": "Recommended",
+    "imageUrl": "placeholder-image-url.png",
+    "related": []
+  },
+  {
+    "id": 30,
+    "name": "Eel Cucumber Roll",
+    "description": "Eel with  Cucumber",
+    "price": 7.95,
+    "type": "sushi-roll",
+
+    "tag": "Recommended",
+    "imageUrl": "placeholder-image-url.png",
+    "related": []
+  },
+  {
+    "id": 31,
+    "name": "Big winner Roll",
+    "description": "Ham, imitation crab,Egg Skin,Cucumber and Carrot",
+    "price": 10.95,
+    "type": "special-roll",
+    "menu": true,
+    "tag": "Recommended",
+    "imageUrl": "placeholder-image-url.png",
+    "related": []
+  },
+  {
+    "id": 32,
+    "name": "Dynamite Roll (big)",
+    "description": "Temperature shrimp,imitation crab,Avocado and Cucumber  \uff08Fish roe on top\uff09",
+    "price": 11.95,
+    "type": "special-roll",
+
+    "tag": "Recommended",
+    "imageUrl": "placeholder-image-url.png",
+    "related": []
+  },
+  {
+    "id": 33,
+    "name": "Golden Dragon Roll (big)",
+    "description": "Dynamite Roll base -Salmon on top",
+    "price": 12.95,
+    "type": "special-roll",
+
+    "tag": "Recommended",
+    "imageUrl": "placeholder-image-url.png",
+    "related": []
+  },
+  {
+    "id": 34,
+    "name": "Green Dragon Roll (big)",
+    "description": "Dynamite Roll base -Avocado on top",
+    "price": 12.95,
+    "type": "special-roll",
+
+    "tag": "Recommended",
+    "imageUrl": "placeholder-image-url.png",
+    "related": []
+  },
+  {
+    "id": 35,
+    "name": "Red Dragon Roll (big)",
+    "description": "Dynamite Roll base -Tuna on top",
+    "price": 12.95,
+    "type": "special-roll",
+
+    "tag": "Recommended",
+    "imageUrl": "placeholder-image-url.png",
+    "related": []
+  },
+  {
+    "id": 36,
+    "name": "Black Dragon Roll (big)",
+    "description": "Dynamite Roll base -Eel on top",
+    "price": 12.95,
+    "type": "special-roll",
+    "menu": true,
+    "tag": "Recommended",
+    "imageUrl": "placeholder-image-url.png",
+    "related": []
+  },
+  {
+    "id": 37,
+    "name": "Avocado Sushi 3pcs",
+    "description": "Avocado with rice",
+    "price": 4.95,
+    "type": "sushi",
+
+    "tag": "Recommended",
+    "imageUrl": "sushi/avacado.jpg",
+    "related": []
+  },
+  {
+    "id": 38,
+    "name": "Crab Sushi 3pcs",
+    "description": "Crab with rice",
+    "price": 4.95,
+    "type": "sushi",
+    "menu": true,
+    "tag": "Recommended",
+    "imageUrl": "sushi/crab-sushi.jpg",
+    "related": []
+  },
+  {
+    "id": 39,
+    "name": "Salmon Sushi 3pcs",
+    "description": "Salmon with rice",
+    "price": 5.95,
+    "type": "sushi",
+    "show-case": true,
+    "tag": "Recommended",
+    "imageUrl": "sushi/sushi1.jpg",
+    "related": []
+  },
+  {
+    "id": 40,
+    "name": "Tuna Sushi 3pcs",
+    "description": "Tuna with rice",
+    "price": 5.95,
+    "type": "sushi",
+
+    "tag": "Recommended",
+    "imageUrl": "placeholder-image-url.png",
+    "related": []
+  },
+  {
+    "id": 41,
+    "name": "Eel Sushi 3pcs",
+    "description": "Eel with rice",
+    "price": 5.95,
+    "type": "sushi",
+
+    "tag": "Recommended",
+    "imageUrl": "placeholder-image-url.png",
+    "related": []
+  },
+  {
+    "id": 42,
+    "name": "Salmon 3pcs",
+    "description": "Salmon",
+    "price": 5.95,
+    "type": "sashimi",
+
+    "tag": "Recommended",
+    "imageUrl": "placeholder-image-url.png",
+    "related": []
+  },
+  {
+    "id": 43,
+    "name": "Tuna 3pcs",
+    "description": "Tuna ",
+    "price": 5.95,
+    "type": "sashimi",
+
+    "tag": "Recommended",
+    "imageUrl": "sashimi/tuna.jpg",
+    "related": []
+  },
+  {
+    "id": 44,
+    "name": "Eel 3pcs",
+    "description": "Eel ",
+    "price": 5.95,
+    "type": "sashimi",
+
+    "tag": "Recommended",
+    "imageUrl": "sashimi/eel.jpg",
+    "related": []
+  },
+  {
+    "id": 45,
+    "name": "Spicy Salmon Gunkan-maki",
+    "description": "",
+    "price": 5.95,
+    "type": "gunkan-maki",
+
+    "tag": "Recommended",
+    "imageUrl": "placeholder-image-url.png",
+    "related": []
+  },
+  {
+    "id": 46,
+    "name": "Spicy Tuna Roll Gunkan-maki",
+    "description": "",
+    "price": 5.95,
+    "type": "gunkan-maki",
+
+    "tag": "Recommended",
+    "imageUrl": "placeholder-image-url.png",
+    "related": []
+  },
+  {
+    "id": 47,
+    "name": "Spicy crab Roll Gunkan-maki",
+    "description": "",
+    "price": 5.95,
+    "type": "gunkan-maki",
+
+    "tag": "Recommended",
+    "imageUrl": "placeholder-image-url.png",
+    "related": []
+  },
+  {
+    "id": 48,
+    "name": "Seaweed Gunkan-maki",
+    "description": "",
+    "price": 5.95,
+    "type": "gunkan-maki",
+
+    "tag": "Recommended",
+    "imageUrl": "placeholder-image-url.png",
+    "related": []
+  },
+  {
+    "id": 49,
+    "name": "California  Hand Roll",
+    "description": "imitation crab, Avocado and Cucumber",
+    "price": 5.25,
+    "type": "hand-roll",
+
+    "tag": "Recommended",
+    "imageUrl": "placeholder-image-url.png",
+    "related": []
+  },
+  {
+    "id": 50,
+    "name": "Spicy crab  Hand Roll",
+    "description": "Spicy crab with Spicy meal",
+    "price": 5.25,
+    "type": "hand-roll",
+
+    "tag": "Recommended",
+    "imageUrl": "placeholder-image-url.png",
+    "related": []
+  },
+  {
+    "id": 51,
+    "name": "Spicy Avocado Hand Roll",
+    "description": "Avocado with Spicy meal",
+    "price": 5.25,
+    "type": "hand-roll",
+
+    "tag": "Recommended",
+    "imageUrl": "placeholder-image-url.png",
+    "related": []
+  },
+  {
+    "id": 52,
+    "name": "Dynamite Hand Roll",
+    "description": "Temperature shrimp, imitation crab, Avocado and Cucumber",
+    "price": 5.25,
+    "type": "hand-roll",
+
+    "tag": "Recommended",
+    "imageUrl": "placeholder-image-url.png",
+    "related": []
+  },
+  {
+    "id": 53,
+    "name": "Roll Combo 1 (VEG)",
+    "description": "Avocado&Cucumber Roll+Spicy Avocado Roll+Mango Roll",
+    "price": 17.95,
+    "type": "sushi-combo",
+
+    "tag": "Recommended",
+    "imageUrl": "placeholder-image-url.png",
+    "related": []
+  },
+  {
+    "id": 54,
+    "name": "Roll Combo 2",
+    "description": "California Roll,Spicy crab Roll,Philadelphia Avocado Roll",
+    "price": 18.95,
+    "type": "sushi-combo",
+
+    "tag": "Recommended",
+    "imageUrl": "placeholder-image-url.png",
+    "related": []
+  },
+  {
+    "id": 55,
+    "name": "Roll Combo 3",
+    "description": "California Roll,Spicy crab Roll,Spicy Salmon Roll",
+    "price": 18.95,
+    "type": "sushi-combo",
+
+    "tag": "Recommended",
+    "imageUrl": "placeholder-image-url.png",
+    "related": []
+  },
+  {
+    "id": 56,
+    "name": "Roll Combo 4",
+    "description": "Dynamite Roll,Spicy crab Roll,Spicy Salmon Roll",
+    "price": 24.95,
+    "type": "sushi-combo",
+
+    "tag": "Recommended",
+    "imageUrl": "placeholder-image-url.png",
+    "related": []
+  },
+  {
+    "id": 57,
+    "name": "Tokyo Combo  1",
+    "description": "Salmon Sushi 3pc,Dynamite Roll 5pc",
+    "price": 10.95,
+    "type": "sushi-combo",
+
+    "tag": "Recommended",
+    "imageUrl": "placeholder-image-url.png",
+    "related": []
+  },
+  {
+    "id": 58,
+    "name": "Tokyo Combo  2",
+    "description": "Tuna Sushi 3pc,Dynamite Roll 5pc",
+    "price": 10.95,
+    "type": "sushi-combo",
+
+    "tag": "Recommended",
+    "imageUrl": "placeholder-image-url.png",
+    "related": []
+  },
+  {
+    "id": 59,
+    "name": "Tokyo Combo  3",
+    "description": "Avocado Sushi 3pc,Dynamite Roll 5pc",
+    "price": 10.95,
+    "type": "sushi-combo",
+
+    "tag": "Recommended",
+    "imageUrl": "placeholder-image-url.png",
+    "related": []
+  },
+  {
+    "id": 60,
+    "name": "Family Combo 1",
+    "description": "California Roll,Spicy crab Roll,Spicy Salmon Roll,Spicy Avocado Roll with Salmon Sushi 3pc and Tuna Sushi 3pcs",
+    "price": 36.95,
+    "type": "sushi-combo",
+
+    "tag": "Recommended",
+    "imageUrl": "placeholder-image-url.png",
+    "related": []
+  },
+  {
+    "id": 61,
+    "name": "Vegetable Lo Mein",
+    "description": "",
+    "price": 11.45,
+    "type": "lo-mein",
+
+    "tag": null,
+    "imageUrl": "placeholder-image-url.png",
+    "related": []
+  },
+  {
+    "id": 62,
+    "name": "Chicken Lo Mein",
+    "description": "",
+    "price": 12.45,
+    "type": "lo-mein",
+
+    "tag": null,
+    "imageUrl": "placeholder-image-url.png",
+    "related": []
+  },
+  {
+    "id": 63,
+    "name": "Shrimp Lo Mein",
+    "description": "",
+    "price": 13.45,
+    "type": "lo-mein",
+
+    "tag": null,
+    "imageUrl": "placeholder-image-url.png",
+    "related": []
+  },
+  {
+    "id": 64,
+    "name": "Chicken Pan Fried Udon",
+    "description": "",
+    "price": 14.95,
+    "type": "noodle",
+
+    "tag": null,
+    "imageUrl": "placeholder-image-url.png",
+    "related": []
+  },
+  {
+    "id": 65,
+    "name": "Shrimp Pan Fried Udon",
+    "description": "",
+    "price": 15.95,
+    "type": "noodle",
+    "menu": true,
+    "tag": null,
+    "imageUrl": "placeholder-image-url.png",
+    "related": []
+  },
+  {
+    "id": 66,
+    "name": "Tofu with Mix Mushroom Rice ",
+    "description": "Tofu,Mushroom,Carrot,Stea rice",
+    "price": 15.95,
+    "type": "rice",
+    "menu": true,
+    "tag": null,
+    "imageUrl": "placeholder-image-url.png",
+    "related": []
+  },
+  {
+    "id": 67,
+    "name": "Braised Pork Rice ",
+    "description": "Braised Pork,Egg,Mushrooms,Stea rice",
+    "price": 16.95,
+    "type": "rice",
+    "menu": true,
+    "tag": "Recommended",
+    "imageUrl": "placeholder-image-url.png",
+    "related": []
+  },
+  {
+    "id": 68,
+    "name": "General Tso's chicken Rice",
+    "description": "General Tso's chicken with Stea rice",
+    "price": 15.95,
+    "type": "rice",
+    "menu": true,
+    "tag": "Recommended",
+    "imageUrl": "placeholder-image-url.png",
+    "related": []
+  },
+  {
+    "id": 69,
+    "name": "Teriyaki Chicken Rice",
+    "description": "Teriyaki Chicken with Stea rice",
+    "price": 15.95,
+    "type": "rice",
+    "menu": true,
+    "tag": "Recommended",
+    "imageUrl": "placeholder-image-url.png",
+    "related": []
+  },
+  {
+    "id": 70,
+    "name": "Wonton soup",
+    "description": "Pork,green onions",
+    "price": 5.95,
+    "type": "soup-ch",
+
+    "tag": "Recommended",
+    "imageUrl": "placeholder-image-url.png",
+    "related": []
+  }
+]

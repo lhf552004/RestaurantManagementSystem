@@ -164,18 +164,66 @@ class Orders(QMainWindow):
         hl2 = QHBoxLayout()
         hl2.addWidget(self.msg, alignment=Qt.AlignCenter)
         hl2.addWidget(print_bill, alignment=Qt.AlignRight)
-
+        self.subtotal = 0.00
+        self.tax = 0.00
         self.total = 0.00
+        self.HST_RATE = 0.15
         self.food_order = []
+
+        self.subtotal_amount = QLabel("Subtotal : " + str(self.subtotal))
+        self.subtotal_amount.setAlignment(Qt.AlignRight)
+
+        self.tax_amount = QLabel("Tax : " + str(self.tax))
+        self.tax_amount.setAlignment(Qt.AlignRight)
 
         self.total_amount = QLabel("Total : " + str(self.total))
         self.total_amount.setAlignment(Qt.AlignRight)
 
+         # Payment Method Selection
+        self.payment_option = QComboBox()
+        self.payment_option.addItem("Debit/Credit Card")
+        self.payment_option.addItem("Cash")
+
+        self.payment_option.setFixedWidth(250)
+        self.payment_option.currentIndexChanged.connect(self.payment_method_changed)
+
+        payment_label = QLabel("Payment Method:")
+        payment_label.setBuddy(self.payment_option)
+
+        # Cash Received Input
+        self.cash_received_input = QLineEdit()
+        self.cash_received_input.setFixedWidth(100)
+        self.cash_received_input.setValidator(QIntValidator(0, 100000))
+        self.cash_received_input.textChanged.connect(self.calculate_change)
+        self.cash_received_input.hide()
+
+        cash_received_label = QLabel("Cash Received:")
+        cash_received_label.setBuddy(self.cash_received_input)
+
+        # Change Display
+        self.change_display = QLabel("Change: $0.00")
+        self.change_display.hide()
+
+        # Layout for payment options and cash input
+        payment_layout = QHBoxLayout()
+        payment_layout.addWidget(payment_label)
+        payment_layout.addWidget(self.payment_option)
+        payment_layout.addWidget(cash_received_label)
+        payment_layout.addWidget(self.cash_received_input)
+        payment_layout.addWidget(self.change_display)
 
         self.right_content.addWidget(bill)
-        self.right_content.addStretch()
+ 
+        self.right_content.addWidget(self.subtotal_amount)
+        self.right_content.addWidget(self.tax_amount)
         self.right_content.addWidget(self.total_amount)
+        
+       # Integrate the payment layout into the existing right_content layout
+   
+        self.right_content.addLayout(payment_layout)  # Adjust index as needed
+
         self.right_content.addLayout(hl2)
+     
         self.right_content.addStretch()
 
         content = QGridLayout()
@@ -204,7 +252,7 @@ class Orders(QMainWindow):
 
 
         self.setWindowTitle("Settings")
-        self.resize(1160, 605)
+        
 
         self.show()
         self.center()
@@ -213,8 +261,8 @@ class Orders(QMainWindow):
         '''centers the window on the screen'''
         screen = QDesktopWidget().screenGeometry()
         size = self.geometry()
-        self.move(int((screen.width() - size.width()) / 2),
-                  int((screen.height() - size.height()) / 2))
+        # self.move(int((screen.width() - size.width()) / 2),
+        #           int((screen.height() - size.height()) / 2))
 
     def getvalue(self, value):
         print(value)
@@ -278,40 +326,37 @@ class Orders(QMainWindow):
             print("Food not ordered")
             self.msg.setText("Food not ordered")
             self.msg.setStyleSheet("color: red")
-        else:
-            # print(self.table_no.currentText())
-            # # print(int(self.table_no.currentText()[7:8]))
-            # print(type(self.table_no.currentText()))
-            '''
-                Update the database with the order details.
-            '''
-            query = "select id from tables where table_number=%s"
-            values = (self.table_no.currentText(),)
+            return  # Exit the function if no food is ordered
 
-            data = self.db.fetch(query, values)
+        # Query to fetch the table ID
+        query = "SELECT id FROM tables WHERE table_number = %s"
+        values = (self.table_no.currentText(),)
 
-            for (id) in data:
-                table_id = id[0]
+        data = self.db.fetch(query, values)
 
-            query = "insert into orders (table_id, food_list, total_price) " \
-                    "values (%s, %s, %s)"
-            values = (table_id, ', '.join(self.food_order), str(self.total))
+        if not data:
+            print("No table found with number:", self.table_no.currentText())
+            self.msg.setText("Table number not found")
+            self.msg.setStyleSheet("color: red")
+            return  # Exit the function if table ID not found
 
-            data = self.db.execute(query, values)
+        # At this point, data is guaranteed to have at least one row
+        table_id = data[0][0]  # Assume first row and first column is table_id
 
-            self.msg.setText("Saved")
-            self.msg.setStyleSheet("color: green")
+        # Insert the order into the database
+        query = "INSERT INTO orders (table_id, food_list, subtotal, tax, total_price) VALUES (%s, %s, %s)"
+        values = (table_id, ', '.join(self.food_order), str(self.subtotal), str(self.tax), str(self.total))
+        self.db.execute(query, values)
 
-            # print(int(self.table_no.currentText()))
-            # print(', '.join(self.food_order))
-            # print(type(self.food_order))
-            # print(self.total)
+        print("Order saved")
+        self.msg.setText("Saved")
+        self.msg.setStyleSheet("color: green")
 
 
 
     def get_tables(self):
         query = "select table_number, covers from tables " \
-                "where id != ifnull((select table_id from orders where paid = 'no'), 0);"
+                "WHERE id NOT IN (SELECT table_id FROM orders WHERE paid = 'no');"
         values = ()
 
         data = self.db.fetch(query, values)
@@ -414,8 +459,10 @@ class Orders(QMainWindow):
         # self.right_content.addWidget(widget)
         self.right_content.insertWidget(self.right_content.count() - 3, widget)
         # self.right_content.addStretch()
-        self.total += int(quantity.text()) * round(float(food_price_label.text()), 2)
-        self.total_amount.setText("Total: " + str(self.total))
+        self.subtotal += float(quantity.text()) * round(float(food_price_label.text()), 2)
+        self.tax = self.HST_RATE * self.subtotal
+        self.total =  self.subtotal + self.tax
+        self.updateTotals()
 
         self.food_order.append(quantity.text() + " X " + food_label.text() + " = " + food_price_label.text())
         print("\nAdded")
@@ -431,16 +478,38 @@ class Orders(QMainWindow):
         print("Delete here")
         print(source_object.objectName())
 
-        self.total -= float(source_object.objectName())
+        self.subtotal -= float(source_object.objectName())
         self.food_order.remove(source_object.findChildren(QLabel)[0].text()
                                + " X " + source_object.findChildren(QLabel)[2].text()
                                + " = " + source_object.findChildren(QLabel)[3].text())
         print("\nDeleted")
         print(self.food_order)
-
-        self.total_amount.setText("Total: " + str(self.total))
+        self.tax = self.HST_RATE * self.subtotal
+        self.total =  self.subtotal + self.tax
+        self.updateTotals()
         source_object.setParent(None)
+    
+    def updateTotals(self):
+        self.subtotal_amount.setText("Subtotal: " + str(round(self.subtotal, 2)))
+        self.tax_amount.setText("Tax: " + str(round(self.tax, 2)))
+        self.total_amount.setText("Total: " + str(round(self.total, 2)))
 
+    def payment_method_changed(self):
+        if self.payment_option.currentText() == "Cash":
+            self.cash_received_input.show()
+            self.change_display.show()
+        else:
+            self.cash_received_input.hide()
+            self.change_display.hide()
+
+    def calculate_change(self):
+        if self.payment_option.currentText() == "Cash":
+            try:
+                cash_received = float(self.cash_received_input.text())
+                change = cash_received - self.total
+                self.change_display.setText(f"Change: ${change:.2f}")
+            except ValueError:
+                self.change_display.setText("Change: $0.00")
 
 
 
