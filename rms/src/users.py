@@ -11,7 +11,7 @@ import sidebar
 
 from addemployeedetails import AddEmployeeDetails
 
-from classes2.db import DB
+from db import DB
 
 
 '''

@@ -3,14 +3,14 @@ from PyQt5.QtWidgets import (QMainWindow, QDesktopWidget, QApplication, QLabel, 
 from PyQt5.QtCore import (QRect, Qt)
 from PyQt5.QtCore import Qt
 
-from classes2.Admin import Admin
+from Admin import Admin
 from appname import AppName
 # from sidebar import Sidebar
 from footer import Footer
 
 import sidebar
 
-from classes2.db import DB
+from db import DB
 
 import functools
 

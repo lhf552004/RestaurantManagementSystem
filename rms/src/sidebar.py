@@ -18,7 +18,7 @@ from dashboard import Users
 from logout import Logout
 
 
-from classes2.db import DB
+from db import DB
 
 import login
 

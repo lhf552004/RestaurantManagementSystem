@@ -4,7 +4,7 @@ from PyQt5.QtCore import (QRect, Qt, pyqtSignal)
 from PyQt5.QtCore import (Qt, QDate)
 from PyQt5.QtGui import (QIntValidator)
 
-from classes2.db import DB
+from db import DB
 
 class AddTableDetails(QMainWindow):
 

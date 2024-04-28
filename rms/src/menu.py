@@ -10,14 +10,12 @@ import sidebar
 
 from addsearchframe import AddSearchFrame
 
-from addcategorydetails import AddCategoryDetails
+from addmenudetails import AddMenuDetails
 
-from classes2.db import DB
-
-import dashboard
+from db import DB
 
 
-class Bill(QMainWindow):
+class Menu(QMainWindow):
 
     def __init__(self, parent):
         super().__init__(parent)
@@ -28,7 +26,7 @@ class Bill(QMainWindow):
 
     def initUI(self):
 
-        in_class = "bills"
+        in_class = "menu"
 
         self.sidebar = sidebar.Sidebar(self)
         self.sidebar.window.connect(self.getvalue)
@@ -39,12 +37,13 @@ class Bill(QMainWindow):
         footer = Footer()
 
         add_and_search = AddSearchFrame(in_class)
-        add_and_search.add_button.clicked.connect(lambda: self.add_bill(in_class))
+        add_and_search.add_button.clicked.connect(lambda: self.add_menu(in_class))
         add_and_search.search_button.clicked.connect(
-                                        lambda: self.search_bill(add_and_search.search_box))
+                                        lambda: self.search_menu(add_and_search.search_box))
+
 
         self.table = QTableWidget()
-        self.table.setColumnCount(7)
+        self.table.setColumnCount(5)
         # self.table.setStyleSheet("border: none")
         # self.table.setStyleSheet(
         #     "background-color: rgb(255, 255, 255);\n"
@@ -53,15 +52,17 @@ class Bill(QMainWindow):
         # )
 
         # self.table.setHorizontalHeaderItem(0, QTableWidgetItem("ID"))
-        self.table.setHorizontalHeaderItem(0, QTableWidgetItem("Table Number"))
-        self.table.setHorizontalHeaderItem(1, QTableWidgetItem("Food List"))
-        self.table.setHorizontalHeaderItem(2, QTableWidgetItem("total_price"))
-        self.table.setHorizontalHeaderItem(3, QTableWidgetItem("Paid"))
-        self.table.setHorizontalHeaderItem(4, QTableWidgetItem("Edit"))
-        self.table.setHorizontalHeaderItem(5, QTableWidgetItem("Delete"))
-        self.table.setHorizontalHeaderItem(6, QTableWidgetItem("Paid"))
+        self.table.setHorizontalHeaderItem(0, QTableWidgetItem("Food"))
+        self.table.setHorizontalHeaderItem(1, QTableWidgetItem("Category"))
+        self.table.setHorizontalHeaderItem(2, QTableWidgetItem("Price"))
+        # self.table.setHorizontalHeaderItem(3, QTableWidgetItem("Bonus"))
+        # self.table.setHorizontalHeaderItem(3, QTableWidgetItem("Joining Date"))
+        # self.table.setHorizontalHeaderItem(6, QTableWidgetItem("Total Salary"))
+        self.table.setHorizontalHeaderItem(3, QTableWidgetItem("Edit"))
+        self.table.setHorizontalHeaderItem(4, QTableWidgetItem("Delete"))
 
-        data = self.load_bill_data()
+
+        data = self.load_menu_data()
         print(data)
 
         for x in data:
@@ -88,7 +89,7 @@ class Bill(QMainWindow):
         self.setContentsMargins(0, 0, 0, 0)
 
         # self.resize(800, 600)
-        self.setWindowTitle("Login")
+        self.setWindowTitle("Employee")
         self.showMaximized()
 
         self.show()
@@ -127,10 +128,13 @@ class Bill(QMainWindow):
         elif value == 8:
             self.hide()
             view = sidebar.Menu(self)
+        elif value == 9:
+            self.hide()
+            view = sidebar.Bill(self)
 
-    def load_bill_data(self):
-        query = "select orders.id, table_number, food_list, total_price, paid from orders " \
-                "join tables on tables.id = orders.table_id"
+    def load_menu_data(self):
+        query = "SELECT food_name, price, category_name FROM menu " \
+                "join category on menu.category_id = category.id order by category_name"
 
         result = self.db.fetch(query)
 
@@ -139,20 +143,83 @@ class Bill(QMainWindow):
     '''
         This function is called after an employee has been added and returns only the last row.
     '''
-    def add_update_bill_data(self):
-        query = "select orders.id, table_number, food_list, total_price, paid from orders " \
-                "join tables on tables.id = orders.table_id " \
+    def add_update_menu_data(self):
+        query = "SELECT food_name, price, category_name FROM menu " \
+                "join category on menu.category_id = category.id " \
                 "order by id desc limit 1;"
 
         result = self.db.fetch(query)
 
         return result
 
-    def edit_bill(self):
+    def edit_menu(self):
         emp_row = self.table.indexAt(self.sender().pos())
+        id = self.table.cellWidget(emp_row.row(), emp_row.column()).objectName()
         print(emp_row.row())
+        print(id)
+        print(type(id))
 
-    def delete_bill(self):
+        '''
+            Get the data from the database for that user.
+        '''
+        data = self.get_data(id)
+
+        print("Data")
+        print(data)
+        # print(type(data[4]))
+
+
+
+        view = AddMenuDetails(self, "update", data[0])
+
+        view.nametextbox.setText(data[0])
+        view.pricetextbox.setText(str(data[1]))
+
+        category = self.get_category(data[2])
+        view.category_list.setCurrentText(category)
+
+        view.closing.connect(self.editupdate_emp)
+
+    def get_category(self, category):
+        query = "SELECT category_name FROM category " \
+                "where id=%s"
+        values = (category,)
+
+        result = self.db.fetch(query, values)
+
+        for (category) in result:
+            category = category[0]
+
+        return category
+
+    def editupdate_emp(self, check):
+        print("I am here")
+        print(check)
+
+        self.table.clearContents()
+        self.table.setRowCount(0)
+
+        data = self.load_menu_data()
+
+        self.populate_table(data)
+        self.table.resizeColumnsToContents()
+        # self.table.resizeColumnsToContents()
+
+    def get_data(self, id):
+        query = "SELECT food_name, price, category_id FROM menu " \
+                "where food_name=%s"
+        values = (id,)
+
+        result = self.db.fetch(query, values)
+
+        for (food_name, price, category) in result:
+            food_name = food_name
+            price = price
+            category = category
+
+        return [food_name, price, category]
+
+    def delete_menu(self):
         emp_row = self.table.indexAt(self.sender().pos())
 
         # print(emp_row.row())
@@ -160,44 +227,41 @@ class Bill(QMainWindow):
 
         # print(self.table.cellWidget(emp_row.row(), emp_row.column()).objectName())
 
-        id = int(self.table.cellWidget(emp_row.row(), emp_row.column()).objectName())
+        id = self.table.cellWidget(emp_row.row(), emp_row.column()).objectName()
         # print(id)
         # print(emp_row.child(emp_row.row(), emp_row.column()))
 
-        query = "DELETE FROM orders WHERE id=%s"
+        query = "DELETE FROM menu WHERE food_name=%s"
         values = (id,)
 
         result = self.db.execute(query, values)
 
         self.table.clearContents()
         self.table.setRowCount(0)
-        data = self.load_bill_data()
+        data = self.load_menu_data()
 
         self.populate_table(data)
 
-    def add_bill(self, where):
-        if where == "category":
-            print("Category Button Clicked from category")
+    def add_menu(self, where):
+        if where == "menu":
+            print("Employee Button Clicked from Menu")
 
-            view = AddCategoryDetails(self)
-            view.closing.connect(self.update_bill)
+            view = AddMenuDetails(self, "add")
+            view.closing.connect(self.update_menu)
 
         elif where == "stocks":
             print("Stock Button Clicked")
 
-    def search_bill(self, search_obj):
+    def search_menu(self, search_obj):
         search = search_obj.text()
         search_obj.setText("")
 
         print("Search")
         if search != "":
-            query = "select orders.id, table_number, food_list, total_price, paid " \
-                    "from orders join tables on tables.id = orders.table_id " \
-                    "and tables.table_number like %s;"
+            query = "SELECT * FROM menu WHERE food_name like %s"
             values = ("%" + search + "%",)
         else:
-            query = "SELECT orders.id, table_number, food_list, total_price, paid FROM orders " \
-                    "join tables on tables.id = orders.table_id"
+            query = "SELECT * FROM menu"
             values = ()
 
         self.table.clearContents()
@@ -206,80 +270,49 @@ class Bill(QMainWindow):
         data = self.db.fetch(query, values)
 
         self.populate_table(data)
-        self.table.resizeColumnsToContents()
 
-    def paid_bill(self):
-        emp_row = self.table.indexAt(self.sender().pos())
 
-        # print(emp_row.row())
-        # print(emp_row.column())
-
-        # print(self.table.cellWidget(emp_row.row(), emp_row.column()).objectName())
-
-        id = int(self.table.cellWidget(emp_row.row(), emp_row.column()).objectName())
-
-        print(emp_row)
-        print(id)
-
-        query = "update orders set paid = 'yes' where id = %s;"
-        values = (id,)
-
-        result = self.db.execute(query, values)
-
-        self.table.clearContents()
-        self.table.setRowCount(0)
-        data = self.load_bill_data()
-
-        self.populate_table(data)
-        self.table.resizeColumnsToContents()
 
 
     '''
         Repopulates the employee table with the updated data.
     '''
-    def update_bill(self, check):
+    def update_menu(self, check):
         print("I am here")
         print(check)
 
-        data = self.add_update_bill_data()
+        self.table.clearContents()
+        self.table.setRowCount(0)
+        data = self.load_menu_data()
 
         self.populate_table(data)
-        self.table.resizeColumnsToContents()
 
     '''
         This function populates the employee table with data.
     '''
     def populate_table(self, data):
-        for (id, table_number, food_list, total_price, paid) in data:
+        for (food_name, price, category_name) in data:
             self.table.insertRow(self.table.rowCount())
 
-            self.table.setItem(self.table.rowCount() - 1, 0, QTableWidgetItem(str(table_number)))
-            self.table.setItem(self.table.rowCount() - 1, 1, QTableWidgetItem(str(food_list)))
-            self.table.setItem(self.table.rowCount() - 1, 2, QTableWidgetItem(str(total_price)))
-            self.table.setItem(self.table.rowCount() - 1, 3, QTableWidgetItem(str(paid)))
-
+            self.table.setItem(self.table.rowCount() - 1, 0, QTableWidgetItem(str(food_name)))
+            self.table.setItem(self.table.rowCount() - 1, 1, QTableWidgetItem(str(category_name)))
+            self.table.setItem(self.table.rowCount() - 1, 2, QTableWidgetItem(str(price)))
+            # self.table.setItem(self.table.rowCount() - 1, 3, QTableWidgetItem(str(bonus)))
+            # self.table.setItem(self.table.rowCount() - 1, 3, QTableWidgetItem(str(joining_date.strftime("%d-%m-%Y"))))
             edit = QPushButton(self.table)
+            edit.setObjectName(str(food_name))
             edit.setStyleSheet("background-color: rgb(50,205,50);")
             edit.setText("Edit")
             edit.adjustSize()
-            edit.clicked.connect(self.edit_bill)
+            edit.clicked.connect(self.edit_menu)
 
-            self.table.setCellWidget(self.table.rowCount() - 1, 4, edit)
+            self.table.setCellWidget(self.table.rowCount() - 1, 3, edit)
 
             delete = QPushButton(self.table)
-            delete.setObjectName(str(id))
+            delete.setObjectName(str(food_name))
             delete.setStyleSheet("background-color: #d63447;")
             delete.setText("Delete")
             delete.adjustSize()
-            delete.clicked.connect(self.delete_bill)
-            # delete.mousePressEvent = functools.partial(self.delete_emp, source_object=delete)
-            self.table.setCellWidget(self.table.rowCount() - 1, 5, delete)
-
-            paid = QPushButton(self.table)
-            paid.setObjectName(str(id))
-            paid.setStyleSheet("background-color: grey;")
-            paid.setText("Paid")
-            paid.adjustSize()
-            paid.clicked.connect(self.paid_bill)
-            # paid.mousePressEvent = functools.partial(self.paid_emp, source_object=paid)
-            self.table.setCellWidget(self.table.rowCount() - 1, 6, paid)
+            delete.clicked.connect(self.delete_menu)
+            # delete.mousePressEvent = functools.partial(self.delete_menu, source_object=delete)
+            self.table.setCellWidget(self.table.rowCount() - 1, 4, delete)

@@ -6,7 +6,7 @@ from PyQt5.QtCore import Qt
 from login import Login
 from appname import AppName
 
-from classes2.db import DB
+from db import DB
 
 class Test(QMainWindow):
 

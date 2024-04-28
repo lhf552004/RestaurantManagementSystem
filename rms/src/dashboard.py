@@ -20,7 +20,7 @@ from menu import Menu
 from bill import Bill
 from users import Users
 
-from classes2.db import DB
+from db import DB
 
 
 class Dashboard(QMainWindow):

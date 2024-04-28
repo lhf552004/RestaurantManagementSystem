@@ -12,7 +12,7 @@ import sidebar
 
 import functools
 
-from classes2.db import DB
+from db import DB
 
 import dashboard
 

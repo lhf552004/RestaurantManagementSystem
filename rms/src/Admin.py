@@ -1,4 +1,4 @@
-from classes2.db import DB
+from db import DB
 
 # Admin Class for managing Admin  related operation
 

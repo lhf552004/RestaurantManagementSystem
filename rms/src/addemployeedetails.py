@@ -3,7 +3,7 @@ from PyQt5.QtWidgets import (QMainWindow, QDesktopWidget, QApplication, QLabel, 
 from PyQt5.QtCore import (QRect, Qt, QDate, pyqtSignal)
 from PyQt5.QtGui import (QIntValidator)
 
-from classes2.db import DB
+from db import DB
 
 import datetime
 

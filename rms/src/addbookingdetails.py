@@ -5,7 +5,7 @@ from PyQt5.QtCore import (Qt, QDate)
 
 import datetime
 
-from classes2.db import DB
+from db import DB
 
 
 class AddBookingDetails(QMainWindow):
