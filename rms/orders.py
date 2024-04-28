@@ -253,7 +253,7 @@ class Orders(QMainWindow):
 
         self.setWindowTitle("Settings")
         
-
+        self.showMaximized()
         self.show()
         self.center()
 
@@ -329,23 +329,23 @@ class Orders(QMainWindow):
             return  # Exit the function if no food is ordered
 
         # Query to fetch the table ID
-        query = "SELECT id FROM tables WHERE table_number = %s"
-        values = (self.table_no.currentText(),)
+        # query = "SELECT id FROM tables WHERE table_number = %s"
+        # values = (self.table_no.currentText(),)
 
-        data = self.db.fetch(query, values)
+        # data = self.db.fetch(query, values)
 
-        if not data:
-            print("No table found with number:", self.table_no.currentText())
-            self.msg.setText("Table number not found")
-            self.msg.setStyleSheet("color: red")
-            return  # Exit the function if table ID not found
+        # if not data:
+        #     print("No table found with number:", self.table_no.currentText())
+        #     self.msg.setText("Table number not found")
+        #     self.msg.setStyleSheet("color: red")
+        #     return  # Exit the function if table ID not found
 
         # At this point, data is guaranteed to have at least one row
-        table_id = data[0][0]  # Assume first row and first column is table_id
+        # table_id = data[0][0]  # Assume first row and first column is table_id
 
         # Insert the order into the database
-        query = "INSERT INTO orders (table_id, food_list, subtotal, tax, total_price) VALUES (%s, %s, %s)"
-        values = (table_id, ', '.join(self.food_order), str(self.subtotal), str(self.tax), str(self.total))
+        query = "INSERT INTO orders (food_list, subtotal, tax, total_price) VALUES (%s, %s, %s, %s)"
+        values = (', '.join(self.food_order), str(self.subtotal), str(self.tax), str(self.total))
         self.db.execute(query, values)
 
         print("Order saved")

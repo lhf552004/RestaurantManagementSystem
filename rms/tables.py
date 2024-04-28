@@ -98,7 +98,7 @@ class Table(QMainWindow):
 
         # self.resize(800, 600)
         self.setWindowTitle("Login")
-        self.resize(1160, 605)
+        self.showMaximized()
 
         self.show()
         self.center()
@@ -107,8 +107,7 @@ class Table(QMainWindow):
         '''centers the window on the screen'''
         screen = QDesktopWidget().screenGeometry()
         size = self.geometry()
-        self.move(int((screen.width() - size.width()) / 2),
-                  int((screen.height() - size.height()) / 2))
+        
 
     def getvalue(self, value):
         print(value)

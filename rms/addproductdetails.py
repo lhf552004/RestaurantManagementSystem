@@ -106,5 +106,4 @@ class AddProductDetails(QFrame):
         '''centers the window on the screen'''
         screen = QDesktopWidget().screenGeometry()
         size = self.geometry()
-        self.move(int((screen.width() - size.width()) / 2),
-                  int((screen.height() - size.height()) / 2))
+        

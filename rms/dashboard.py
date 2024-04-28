@@ -88,7 +88,7 @@ class Dashboard(QMainWindow):
         self.setCentralWidget(centralWidget)
         self.setContentsMargins(0, 0, 0, 0)
 
-        self.resize(1160, 605)
+        self.showMaximized()
         self.setWindowTitle("Login")
 
         self.show()
@@ -99,8 +99,7 @@ class Dashboard(QMainWindow):
         '''centers the window on the screen'''
         screen = QDesktopWidget().screenGeometry()
         size = self.geometry()
-        self.move(int((screen.width() - size.width()) / 2),
-                  int((screen.height() - size.height()) / 2))
+        
 
     def getvalue(self, value):
         print(value)
