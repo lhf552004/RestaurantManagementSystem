@@ -1,6 +1,14 @@
 import mysql.connector as mysql
-
+import os
 # Database Class
+from dotenv import load_dotenv
+
+# Load environment variables from .env file
+load_dotenv()
+
+# Accessing variables
+db_user = os.getenv('DB_USER')
+db_password = os.getenv('DB_PASSWORD')
 
 
 class DB:
@@ -8,7 +16,7 @@ class DB:
     def __init__(self):
         # instance of database object that connects us to the database
         self._db = mysql.connect(
-            host="localhost", user="root", passwd="", database="rmsFinalProject")  # rms_final_project
+            host="localhost", user=db_user, passwd=db_password, database="rmsFinalProject")  # rms_final_project
         # Closing the database Connection
         self._db.close()
 
@@ -36,7 +44,7 @@ class DB:
         cursor.execute(query, values)
         # row_count = cursor.rowcount
         self._db.commit()
-        row_last_id = cursor.getlastrowid()
+        row_last_id = cursor.lastrowid
         cursor.close()
         self._db.close()
         return row_last_id

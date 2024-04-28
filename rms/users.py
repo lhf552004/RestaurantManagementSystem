@@ -100,8 +100,8 @@ class Users(QMainWindow):
         '''centers the window on the screen'''
         screen = QDesktopWidget().screenGeometry()
         size = self.geometry()
-        self.move((screen.width() - size.width()) / 2,
-                  (screen.height() - size.height()) / 2)
+        self.move(int((screen.width() - size.width()) / 2),
+                  int((screen.height() - size.height()) / 2))
 
     def load_users_data(self):
         query = "SELECT id, admin_name, password, roles FROM admin where admin_name != 'admin'"

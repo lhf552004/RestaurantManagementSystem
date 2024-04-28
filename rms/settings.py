@@ -181,8 +181,8 @@ class Settings(QMainWindow):
         '''centers the window on the screen'''
         screen = QDesktopWidget().screenGeometry()
         size = self.geometry()
-        self.move((screen.width() - size.width()) / 2,
-                  (screen.height() - size.height()) / 2)
+        self.move(int((screen.width() - size.width()) / 2),
+                  int((screen.height() - size.height()) / 2))
 
     def getvalue(self, value):
         print(value)
@@ -343,8 +343,8 @@ class ChangePassword(QMainWindow):
         '''centers the window on the screen'''
         screen = QDesktopWidget().screenGeometry()
         size = self.geometry()
-        self.move((screen.width() - size.width()) / 2,
-                  (screen.height() - size.height()) / 2)
+        self.move(int((screen.width() - size.width()) / 2),
+                  int((screen.height() - size.height()) / 2))
 
     def update_password(self):
         print("Update password")
@@ -537,8 +537,8 @@ class AddUser(QMainWindow):
         ''' centers the window on the screen'''
         screen = QDesktopWidget().screenGeometry()
         size = self.geometry()
-        self.move((screen.width() - size.width()) / 2,
-                  (screen.height() - size.height()) / 2)
+        self.move(int((screen.width() - size.width()) / 2),
+                  int((screen.height() - size.height()) / 2))
 
     def add_privileges(self):
         print("List the selected privileges.")

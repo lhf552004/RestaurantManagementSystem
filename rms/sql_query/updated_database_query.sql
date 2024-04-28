@@ -159,13 +159,12 @@ values (2, "Burger, Pizza", "50")
 -- =========================================================================
 
 -- Restaurant Information table
-CREATE TABLE `rest_info`(
-    id int NOT NULL PRIMARY KEY AUTO_INCREMENT,
-    restaurant_name varchar(100) NOT NULL,
-    address varchar(300) NOT NULL,
-    contact varchar(300) NOT NULL
+CREATE TABLE `rmsFinalProject`.`rest_info` (
+    id INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
+    restaurant_name VARCHAR(100) NOT NULL,
+    address VARCHAR(300) NOT NULL,
+    contact VARCHAR(300) NOT NULL
 );
-
 -- Insert Query
 INSERT INTO `rmsFinalProject`.`rest_info`(`restaurant_name`, `address`, `contact`)
 values("Food Fest", "Dublin", "0123456789");
